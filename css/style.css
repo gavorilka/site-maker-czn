@@ -1264,3 +1264,23 @@ button,
 .hidden {
   display: none;
 }
+.modal{
+  height: 100%;
+  width: 100%;
+  background-color: rgba(100,100,100,0.5);
+  z-index: 99;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  align-items: center;
+  background-color: rgb(230,232,235);
+  border-radius: 25px;
+  color: black;
+  padding: 30px;
+}
