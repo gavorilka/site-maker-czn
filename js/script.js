@@ -31,13 +31,38 @@ const chooseElemBtn = document.querySelectorAll('.choose-elem__btn')
 function deleteElem(event){
     let deletedElem = event.target.parentNode
     // console.log(deletedElem)
+    
+    const block = deletedElem.parentNode;
+    // console.log(block)
     deletedElem.remove()
+    const wrapperItems = block.querySelectorAll('.element');
+    // когда в *__elements-wrapper нет элементов, 
+    // добавить класс *--empty его родителю
+    if (wrapperItems.length === 0) {
+       
+      if (block.classList.contains('header')) {
+        block.classList.add('header--empty');
+      } 
+  
+      if (block.classList.contains('content')) {
+        block.classList.add('content--empty');
+      }
+  
+      if (block.classList.contains('footer')) {
+        block.classList.add('footer--empty');
+      }
+    }
 }
 
 const updateElem = function(evt){
     const modal = document.createElement('div')
     modal.classList.add('modal')
     const updWindow = document.createElement('textarea')
+    if(evt.target.tagName == 'img' || evt.target.tagName == 'IMG'){
+        updWindow.value = evt.target.src
+    } else {
+        updWindow.value = evt.target.textContent
+    }
     const sucessBtn = document.createElement('button')
     sucessBtn.textContent = "Отправить"
     const modalBody = document.createElement('div')
